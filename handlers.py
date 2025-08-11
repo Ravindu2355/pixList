@@ -38,5 +38,5 @@ async def pixlist_command(client, message):
         }
 
         await download_pixeldrain_file(file_id, file_name, save_path, progress, status_msg, client)
-        await upload_to_telegram(client, os.getenv("CHANNEL_ID"), save_path, file_name, status_msg.id)
+        await upload_to_telegram(client, os.getenv("channel",message.chat.id), save_path, file_name, status_msg.id)
         await asyncio.sleep(5)
