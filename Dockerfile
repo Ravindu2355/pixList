@@ -23,4 +23,4 @@ EXPOSE 8000
 
 # Start both Flask and the bot
 # Using bash -c so both run in one container
-CMD ["bash", "-c", "gunicorn --bind 0.0.0.0:8000 flask_server:app & python3 main.py"]
+CMD ["bash", "-c", "gunicorn --bind 0.0.0.0:8000 app:app & python3 main.py"]
