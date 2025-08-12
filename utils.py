@@ -38,7 +38,7 @@ def human_readable_time(seconds):
     else:
         return f"{s}s"
 
-def progress_callback(current, total, message, start_time, action, file_name, chat_id, message_id, app):
+async def progress_callback(current, total, message, start_time, action, file_name, chat_id, message_id, app):
     try:
         now = time.time()
 
@@ -69,7 +69,8 @@ def progress_callback(current, total, message, start_time, action, file_name, ch
             f"⏳ **ETA:** {human_readable_time(eta)}"
         )
 
-        app.loop.create_task(app.edit_message_text(chat_id, message_id, text))
+        #app.loop.create_task(app.edit_message_text(chat_id, message_id, text))
+        await app.edit_message_text(chat_id, message_id, text)
 
     except Exception as e:
         print(f"[Progress Callback Error] {e}")
