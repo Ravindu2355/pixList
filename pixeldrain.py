@@ -30,4 +30,4 @@ async def download_pixeldrain_file(file_id, file_name, save_path, progress, file
                         continue
                     f.write(chunk)
                     downloaded += len(chunk)
-                    progress["callback"](downloaded, total, None, start_time, "Downloading", file_name, progress["chat_id"], progress["msg_id"], app)
+                    await progress["callback"](downloaded, total, None, start_time, "Downloading", file_name, progress["chat_id"], progress["msg_id"], app)
