@@ -80,7 +80,8 @@ async def upload_to_telegram(app, chat_id, file_path, file_name, msg_id):
                 os.remove(thumb_path)
 
     except Exception as e:
-        await app.edit_message_text(chat_id, msg_id, f"❌ Upload failed for `{file_name}`\nError: {e}")
+        #await app.edit_message_text(chat_id, msg_id, f"❌ Upload failed for `{file_name}`\nError: {e}")
+        await app.send_message(chat_id,  f"❌ Upload failed for `{file_name}`\nError: {e}")
 
     finally:
         if os.path.exists(file_path):
