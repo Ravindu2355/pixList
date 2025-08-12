@@ -12,10 +12,10 @@ async def fetch_pixeldrain_list(folder_id):
             return data.get("files", [])
 
 async def download_pixeldrain_file(file_id, file_name, save_path, progress, file_message, app):
-    url = f"{PIXELDRAIN_API}/file/{file_id}"
+    url = f"{PIXELDRAIN_API}/file/{file_id}?download"
     headers = {
-        "Referer": "https://pixeldrain.com/",
-        "User-Agent": "Mozilla/5.0"
+        "Referer": f"https://pixeldrain.com/u/{file_id}",
+        "User-Agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36"
     }
     async with aiohttp.ClientSession(headers=headers) as session:
         async with session.get(url) as resp:
